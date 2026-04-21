@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 1rem;
+}
+
+.table,
+.card,
+.alert,
+.btn,
+.form-control,
+.form-select {
+    border-radius: 0.8rem;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}

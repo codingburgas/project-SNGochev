@@ -1,0 +1,44 @@
+@model List<EventListDto>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="p-4 p-md-5 mb-4 bg-light rounded-3 border">
+    <div class="container-fluid py-3">
+        <h1 class="display-6 fw-bold">Manage events and sell tickets online</h1>
+        <p class="col-md-9 fs-5">
+            This ASP.NET Core MVC system lets organizers create events and attendees reserve tickets until the capacity is reached.
+        </p>
+        <a class="btn btn-primary btn-lg" asp-controller="Events" asp-action="Index">Browse Events</a>
+    </div>
+</div>
+
+<h2 class="mb-3">Upcoming Events</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No upcoming events are available right now.</div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2">@item.CategoryName</span>
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="mb-1"><strong>Date:</strong> @item.EventDate.ToString("dd MMM yyyy HH:mm")</p>
+                        <p class="mb-1"><strong>Venue:</strong> @item.Venue</p>
+                        <p class="mb-1"><strong>Available:</strong> @item.AvailableSeats / @item.Capacity</p>
+                        <p class="mb-0"><strong>Price:</strong> €@item.TicketPrice.ToString("F2")</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a class="btn btn-outline-primary w-100" asp-controller="Events" asp-action="Details" asp-route-id="@item.Id">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

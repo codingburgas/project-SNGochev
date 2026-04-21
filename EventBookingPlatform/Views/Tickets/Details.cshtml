@@ -1,0 +1,19 @@
+@model TicketListDto
+@{
+    ViewData["Title"] = "Ticket Details";
+}
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h2>Ticket #@Model.Id</h2>
+        <p><strong>Event:</strong> @Model.EventTitle</p>
+        <p><strong>Buyer:</strong> @Model.BuyerName (@Model.BuyerEmail)</p>
+        <p><strong>Event Date:</strong> @Model.EventDate.ToString("dd MMM yyyy HH:mm")</p>
+        <p><strong>Purchased At:</strong> @Model.PurchasedAt.ToString("dd MMM yyyy HH:mm")</p>
+        <p><strong>Quantity:</strong> @Model.Quantity</p>
+        <p><strong>Total Price:</strong> €@Model.TotalPrice.ToString("F2")</p>
+        <p><strong>Status:</strong> @Model.Status</p>
+
+        <a class="btn btn-secondary" asp-action="MyTickets">Back</a>
+    </div>
+</div>

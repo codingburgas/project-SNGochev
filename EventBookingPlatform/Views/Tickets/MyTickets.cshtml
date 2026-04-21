@@ -1,0 +1,45 @@
+@model List<TicketListDto>
+@{
+    ViewData["Title"] = "My Tickets";
+}
+
+<h2 class="mb-3">My Tickets</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">You have not purchased any tickets yet.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Event</th>
+                    <th>Event Date</th>
+                    <th>Purchased</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th class="text-center">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EventTitle</td>
+                        <td>@item.EventDate.ToString("dd MMM yyyy HH:mm")</td>
+                        <td>@item.PurchasedAt.ToString("dd MMM yyyy HH:mm")</td>
+                        <td>@item.Quantity</td>
+                        <td>€@item.TotalPrice.ToString("F2")</td>
+                        <td>@item.Status</td>
+                        <td class="text-center">
+                            <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

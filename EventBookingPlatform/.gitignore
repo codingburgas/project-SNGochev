@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+eventbooking.db
+eventbooking.db-shm
+eventbooking.db-wal
